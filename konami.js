@@ -1,6 +1,6 @@
 /* * * * * * * * * *
  *    konami.js    *
- *  Version   0.1  *
+ *  Version 0.2.1  *
  *  License:  MIT  *
  * Simon  Waldherr *
  * * * * * * * * * */
@@ -67,6 +67,38 @@ var konami_init = function () {
 
 var konami_get = function (key) {
   return [konamidb[key.toUpperCase().charCodeAt(0)].status, konamidb[key.toUpperCase().charCodeAt(0)].last];
+}
+
+var konami_reg = function (key, callback) {
+  addEventListener("keydown", function(event) {
+    var pressedKey = event.keyCode;
+    if(parseInt(pressedKey) === 16) {
+      pressedKey = 'shift';
+    } else if(parseInt(pressedKey) === 18) {
+      pressedKey = 'alt';
+    } else if(parseInt(pressedKey) === 91) {
+      pressedKey = 'cmd';
+    } else if(parseInt(pressedKey) === 17) {
+      pressedKey = 'ctrl';
+    } else if(parseInt(pressedKey) === 37) {
+      pressedKey = 'left';
+    } else if(parseInt(pressedKey) === 39) {
+      pressedKey = 'right';
+    } else if(parseInt(pressedKey) === 38) {
+      pressedKey = 'up';
+    } else if(parseInt(pressedKey) === 40) {
+      pressedKey = 'down';
+    } else if(parseInt(pressedKey) === 13) {
+      pressedKey = 'return';
+    } else if(parseInt(pressedKey) === 8) {
+      pressedKey = 'backspace';
+    } else {
+      pressedKey = (konamidb['uc']) ? String.fromCharCode(pressedKey).toUpperCase() : String.fromCharCode(pressedKey).toLowerCase();
+    }
+    if(pressedKey === key) {
+      callback();
+    }
+  });
 }
 
 window.onload = konami_init();
