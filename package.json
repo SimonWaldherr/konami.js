@@ -1,0 +1,45 @@
+{
+  "name": "konamijs",
+  "version": "0.2.3",
+  "author": {
+    "name": "Simon Waldherr",
+    "email": "contact@simonwaldherr.de",
+    "url": "http://simon.waldherr.eu/"
+  },
+  "description": "konami.js logs every keypress and store it for later",
+  "homepage": "https://github.com/SimonWaldherr/konami.js",
+  "maintainers": [
+    {
+      "name": "Simon Waldherr",
+      "email": "contact@simonwaldherr.de",
+      "url": "http://simon.waldherr.eu/"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Simon Waldherr",
+      "email": "contact@simonwaldherr.de",
+      "url": "http://simon.waldherr.eu/"
+    }
+  ],
+  "demos": [
+    "./index.html"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SimonWaldherr/konami.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SimonWaldherr/konami.js/issues",
+    "email": "contact@simonwaldherr.de"
+  },
+  "main": "konami.js",
+  "keywords": [
+    "events",
+    "input",
+    "bind",
+    "keypress"
+  ],
+  "license": "MIT"
+}
+        
