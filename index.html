@@ -2,37 +2,52 @@
 <head>
   <meta charset="utf-8">
   <title>Konami Code .js</title>
-  
   <script src="konami.js" type="text/javascript"></script>
-  <script>
-    addEventListener("keydown", function(event) {
-      document.getElementById('console').innerHTML = JSON.stringify(konamidb);
-    });
-    addEventListener("keyup", function(event) {
-      document.getElementById('console').innerHTML = JSON.stringify(konamidb);
-      document.getElementById('string').innerHTML = konamidb['string'];
-    });
-  </script>
 </head>
 <body>
-  
   <code id="console"></code>
   <br/><br/>
   <code id="string"></code>
   <br/><br/>
-  <input name="" id="tf1" type="text" onkeypress="javascript:document.getElementById('tf2').value = document.getElementById('tf1').value+' = '+konami_get(this.value)[0]; this.value = '';">
+  <input name="" id="tf1" type="text" onkeypress="javascript:document.getElementById('tf2').value = document.getElementById('tf1').value+' = '+konami.get(this.value)[0]; this.value = '';">
   <input name="" id="tf2" readonly="readonly" type="text">
-  
+  <hr/>
+  <code id="console2"></code>
   <script>
-    document.getElementById('console').innerHTML = JSON.stringify(konamidb);
-    document.getElementById('string').innerHTML = konamidb['string'];
-    /*
-    konami_reg('a',function(){alert('a pressed')});
-    konami_reg('alt',function(){alert('alt pressed')});
-    konami_reg('cmd',function(){alert('cmd pressed')});
-    konami_reg('ctrl',function(){alert('ctrl pressed')});
-    konami_reg('shift',function(){alert('shift pressed')});
-    */
+    function writeConsole (string, id, replace) {
+      if (replace) {
+        document.getElementById(id).innerHTML = string;
+      } else {
+        document.getElementById(id).innerHTML = string + "\n<br>" + document.getElementById(id).innerHTML;
+      }
+    }
+
+    window.onload = function () {
+      konami.init(function () {
+        writeConsole( 'konami', 'console2' );
+      });
+
+      writeConsole( JSON.stringify(konami.db), 'console', true );
+      writeConsole( konami.db['string'],       'string',  true );
+
+      konami.reg( 'a',           function () { writeConsole( 'a pressed',         'console2' ) } );
+      konami.reg( 'alt',         function () { writeConsole( 'alt pressed',       'console2' ) } );
+      konami.reg( 'cmd',         function () { writeConsole( 'cmd pressed',       'console2' ) } );
+      konami.reg( 'ctrl',        function () { writeConsole( 'ctrl pressed',      'console2' ) } );
+      konami.reg( 'shift',       function () { writeConsole( 'shift pressed',     'console2' ) } );
+      konami.reg( ['cmd','alt'], function () { writeConsole( 'cmd + alt pressed', 'console2' ) } );
+      konami.reg( ['cmd','a'],   function () { writeConsole( 'cmd + a pressed',   'console2' ) } );
+      konami.reg( ['shift','a'], function () { writeConsole( 'shift + a pressed', 'console2' ) } );
+
+      addEventListener("keydown", function(event) {
+        writeConsole( JSON.stringify(konami.db), 'console', true );
+      });
+
+      addEventListener("keyup", function(event) {
+        writeConsole( JSON.stringify(konami.db), 'console', true );
+        writeConsole( konami.db['string'],       'string',  true );
+      });
+    };
   </script>
 </body>
 </html>
