@@ -1,12 +1,19 @@
 {
   "name": "konamijs",
-  "version": "0.3.0",
+  "title": "konami.js",
+  "version": "0.3.1",
   "author": {
     "name": "Simon Waldherr",
     "email": "contact@simonwaldherr.de",
     "url": "http://simon.waldherr.eu/"
   },
   "description": "konami.js logs every keypress and store it for later",
+  "devDependencies": {
+    "grunt": ">= 0.4.1",
+    "grunt-compare-size": ">= 0.0.0",
+    "grunt-contrib-uglify": ">= 0.2.2",
+    "gzip-js": ">= 0.3.1"
+  },
   "homepage": "https://github.com/SimonWaldherr/konami.js",
   "maintainers": [
     {
@@ -42,4 +49,3 @@
   ],
   "license": "MIT"
 }
-        

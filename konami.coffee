@@ -1,6 +1,6 @@
 # * * * * * * * * * *
 # *    konami.js    *
-# *  Version 0.3.0  *
+# *  Version 0.3.1  *
 # *  License:  MIT  *
 # * Simon  Waldherr *
 # * * * * * * * * * *
@@ -37,9 +37,12 @@ konami =
       else
         konami.db.string = " " + konami.db.string.substr(-42, 41) + key
         konami.db.kcodes = "  " + konami.db.kcodes.substr(-42, 40) + event.keyCode
+      if konami.db.kcodes.substr(-20, 20) is "38384040373937396665"
 
-      #up up down down left right left right B A
-      konamicallback()  if typeof konamicallback is "function"  if konami.db.kcodes.substr(-20, 20) is "38384040373937396665"
+        #up up down down left right left right B A
+        if typeof konami.konamicallback is "function"
+          konami.konamicallback()
+        else konamicallback()  if typeof konamicallback is "function"
       if (konami.db[16].status or konami.db[20].status) and not (konami.db[16].status and konami.db[20].status)
         konami.db.uc = true
       else

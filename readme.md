@@ -6,7 +6,7 @@ konami.js logs every keypress and store it for later
 ##about
 
 License:   MIT  
-Version: 0.3.0  
+Version: 0.3.1  
 Date:  07.2013  
 
 ##demo

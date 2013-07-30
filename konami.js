@@ -1,6 +1,6 @@
 /* * * * * * * * * *
  *    konami.js    *
- *  Version 0.3.0  *
+ *  Version 0.3.1  *
  *  License:  MIT  *
  * Simon  Waldherr *
  * * * * * * * * * */
@@ -53,7 +53,9 @@ var konami = {
       }
       if (konami.db.kcodes.substr(-20, 20) === '38384040373937396665') {
         //up up down down left right left right B A
-        if (typeof konamicallback === 'function') {
+        if (typeof konami.konamicallback === 'function') {
+          konami.konamicallback();
+        } else if (typeof konamicallback === 'function') {
           konamicallback();
         }
       }
