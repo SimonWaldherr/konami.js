@@ -39,6 +39,8 @@
       konami.reg( ['cmd','a'],   function () { writeConsole( 'cmd + a pressed',   'console2' ) } );
       konami.reg( ['shift','a'], function () { writeConsole( 'shift + a pressed', 'console2' ) } );
 
+      konami.reg( ['ctrl','alt','cmd'], function () { writeConsole( 'ctrl + alt + cmd pressed', 'console2' ) } );
+
       addEventListener("keydown", function(event) {
         writeConsole( JSON.stringify(konami.db), 'console', true );
       });
